@@ -1,10 +1,9 @@
-import { Button, Flex, Stack, Image, Box } from '@chakra-ui/react';
+import { Button, Flex, Stack } from '@chakra-ui/react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Input } from 'components/Form/Input';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Logo } from 'components/Context/Header/Logo';
-import imgLogin from 'assets/login.svg';
 
 type SignInFormData = {
   email: string;
