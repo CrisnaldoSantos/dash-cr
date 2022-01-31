@@ -1,11 +1,18 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import App from './App';
+import { AppRoutes } from 'routes';
+import { ChakraProvider } from '@chakra-ui/react';
+import { theme } from 'styles/theme';
+import { SidebarDrawerProvider } from 'context/SidebarDrawerContext';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ChakraProvider theme={theme}>
+      <SidebarDrawerProvider>
+        <AppRoutes />
+      </SidebarDrawerProvider>
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
