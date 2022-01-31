@@ -17,8 +17,13 @@ import { Pagination } from 'components/Structure/Pagination';
 import { Link } from 'react-router-dom';
 import { RiAddLine } from 'react-icons/ri';
 import { DashContainer } from 'components/Structure/DashContainer';
+import { useEffect } from 'react';
+import { api } from 'services/api';
 
 export function UserList() {
+  useEffect(() => {
+    api.get('/users').then((response) => console.log(response.data));
+  }, []);
   return (
     <DashContainer>
       <Box flex="1" borderRadius={8} bg="gray.100" p="8">
@@ -26,17 +31,16 @@ export function UserList() {
           <Heading size="lg" fontWeight="normal">
             Usuários
           </Heading>
-          <Link to="/users/create">
-            <Button
-              as="a"
-              size="sm"
-              fontSize="sm"
-              colorScheme="pink"
-              leftIcon={<Icon as={RiAddLine} />}
-            >
-              Criar Novo
-            </Button>
-          </Link>
+
+          <Button
+            as="a"
+            size="sm"
+            fontSize="sm"
+            colorScheme="pink"
+            leftIcon={<Icon as={RiAddLine} />}
+          >
+            Criar Novo
+          </Button>
         </Flex>
 
         <Table colorScheme="whiteAlpha">

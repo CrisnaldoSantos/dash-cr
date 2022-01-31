@@ -4,8 +4,10 @@ import { AppRoutes } from 'routes';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from 'styles/theme';
 import { SidebarDrawerProvider } from 'context/SidebarDrawerContext';
+import { mock } from 'mock/mirage';
 import reportWebVitals from './reportWebVitals';
 
+mock();
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
