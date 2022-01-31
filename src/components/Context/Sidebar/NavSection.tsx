@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Box, Stack, Text } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
