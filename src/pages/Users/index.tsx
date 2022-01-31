@@ -14,7 +14,6 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import { Pagination } from 'components/Structure/Pagination';
-import { Link } from 'react-router-dom';
 import { RiAddLine } from 'react-icons/ri';
 import { DashContainer } from 'components/Structure/DashContainer';
 import { useEffect } from 'react';

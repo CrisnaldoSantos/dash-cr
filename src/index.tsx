@@ -5,15 +5,19 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from 'styles/theme';
 import { SidebarDrawerProvider } from 'context/SidebarDrawerContext';
 import { mock } from 'mock/mirage';
+import { Provider } from 'react-redux';
+import store from 'store';
 import reportWebVitals from './reportWebVitals';
 
 mock();
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <SidebarDrawerProvider>
-        <AppRoutes />
-      </SidebarDrawerProvider>
+      <Provider store={store}>
+        <SidebarDrawerProvider>
+          <AppRoutes />
+        </SidebarDrawerProvider>
+      </Provider>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
