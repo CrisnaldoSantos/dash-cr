@@ -1,9 +1,13 @@
 import { Modal } from 'components/Context/Modals/General/Modal';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { VStack, SimpleGrid, Input } from '@chakra-ui/react';
-import { current } from '@reduxjs/toolkit';
-import { userModalEditValidationSchema } from '../User/UserModalValidation';
+import { VStack, SimpleGrid } from '@chakra-ui/react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Input } from 'components/Form/Input';
+
+import { RootState } from 'store';
+import { errorToast } from 'utils/toasts';
+import { updateUser } from 'store/users/users.ducks';
 import {
   defaultPasswordValues,
   passwordValidationSchema,
@@ -13,16 +17,6 @@ interface UpdatePasswordModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-type UserData = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  document: string;
-  password: string;
-  role: string;
-};
 
 type UserFormData = {
   password: string;
@@ -36,21 +30,41 @@ export function UpdatePasswordModal({
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<UserFormData>({
     resolver: yupResolver(passwordValidationSchema),
     defaultValues: defaultPasswordValues,
   });
+  const dispatch = useDispatch();
+  const { user } = useSelector((state: RootState) => state.auth);
 
   const handleSave: SubmitHandler<UserFormData> = (data) => {
-    console.log(data);
+    if (data.password !== user.password) {
+      errorToast('A senha atual está incorreta!');
+    } else {
+      const { id, firstName, lastName, email, document, role } = user;
+      const updatedUser = {
+        id,
+        firstName,
+        lastName,
+        email,
+        document,
+        role,
+        password: data.new_password,
+      };
+      dispatch(updateUser(updatedUser));
+    }
   };
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={() => {
+        onClose();
+        reset(defaultPasswordValues);
+      }}
       title="Alterar Senha"
-      onSubmit={() => {}}
+      onSubmit={handleSubmit(handleSave)}
     >
       <VStack spacing="2">
         <SimpleGrid minChildWidth="240px" spacing="4" w="100%">
@@ -58,17 +72,20 @@ export function UpdatePasswordModal({
             type="password"
             label="Senha"
             error={errors.password}
+            passwordInput
             {...register('password')}
           />
           <Input
             type="password"
             label="Nova Senha"
             error={errors.new_password}
+            passwordInput
             {...register('new_password')}
           />
           <Input
             type="password"
-            label="Confirmação da senha"
+            label="Confirmação da Nova Senha"
+            passwordInput
             error={errors.new_password_confirmation}
             {...register('new_password_confirmation')}
           />

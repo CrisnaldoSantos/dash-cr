@@ -14,6 +14,7 @@ import {
   setUserModalCreate,
   setUserModalDelete,
   setUserModalEdit,
+  setUserModalPassword,
   updateUser,
 } from './users.ducks';
 
@@ -93,6 +94,10 @@ export function* editUser({ payload }: ActionType) {
     });
     yield put({
       type: setUserModalEdit.type,
+      payload: false,
+    });
+    yield put({
+      type: setUserModalPassword.type,
       payload: false,
     });
     yield put({ type: stopLoading.type });
