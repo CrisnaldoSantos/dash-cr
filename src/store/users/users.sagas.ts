@@ -3,14 +3,16 @@ import { USERS } from 'constants/endpoints';
 import { startLoading, stopLoading } from 'store/loading/loading.ducks';
 import { api } from 'services/api';
 import { ActionType, ResponseGenerator } from 'store/responseTypes';
-import { successToast } from 'utils/toasts';
+import { errorToast, successToast } from 'utils/toasts';
 import {
+  deleteUser,
   getUser,
   getUsers,
   getUsersSuccess,
   getUserSuccess,
   setUser,
   setUserModalCreate,
+  setUserModalDelete,
 } from './users.ducks';
 
 export function* getUsersList() {
@@ -24,7 +26,7 @@ export function* getUsersList() {
     });
     yield put({ type: stopLoading.type });
   } catch (error) {
-    successToast(`Erro ao listar usuários! ${error}`);
+    errorToast(`Erro ao listar usuários! ${error}`);
   }
 }
 
@@ -39,14 +41,14 @@ export function* getUserDetail({ payload }: ActionType) {
     });
     yield put({ type: stopLoading.type });
   } catch (error) {
-    successToast(`Erro ao buscar usuário! ${error}`);
+    errorToast(`Erro ao buscar usuário! ${error}`);
   }
 }
 
 export function* createUser({ payload }: ActionType) {
   yield put({ type: startLoading.type });
   try {
-    yield api.post(USERS, payload);
+    yield api.delete(USERS, payload);
     successToast('Usuário criado com sucesso!');
     yield put({
       type: getUsers.type,
@@ -57,7 +59,25 @@ export function* createUser({ payload }: ActionType) {
     });
     yield put({ type: stopLoading.type });
   } catch (error) {
-    successToast(`Erro ao criar usuário! ${error}`);
+    errorToast(`Erro ao criar usuário! ${error}`);
+  }
+}
+
+export function* destroyUser({ payload }: ActionType) {
+  yield put({ type: startLoading.type });
+  try {
+    yield api.delete(`${USERS}/${payload}`);
+    successToast('Usuário deletado com sucesso!');
+    yield put({
+      type: getUsers.type,
+    });
+    yield put({
+      type: setUserModalDelete.type,
+      payload: false,
+    });
+    yield put({ type: stopLoading.type });
+  } catch (error) {
+    errorToast(`Erro ao deletar usuário! ${error}`);
   }
 }
 
@@ -65,4 +85,5 @@ export function* watchSagas() {
   yield takeLatest(getUsers.type, getUsersList);
   yield takeLatest(getUser.type, getUserDetail);
   yield takeLatest(setUser.type, createUser);
+  yield takeLatest(deleteUser.type, destroyUser);
 }

@@ -16,6 +16,8 @@ export const getUser = createAction<number>('GET_USER');
 export const getUserSuccess = createAction('GET_USER_SUCCESS');
 
 export const setUser = createAction<object>('CREATE_USER');
+export const deleteUser = createAction<number>('DELETE_USER');
+
 export const setUserModalCreate = createAction<boolean>(
   'SET_USER_MODAL_CREATE'
 );

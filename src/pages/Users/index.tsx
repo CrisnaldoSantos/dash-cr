@@ -11,18 +11,32 @@ import {
 } from '@chakra-ui/react';
 import { RiAddLine, RiDeleteBin2Line, RiEdit2Line } from 'react-icons/ri';
 import { DashContainer } from 'components/Structure/DashContainer';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Table } from 'components/Structure/Table';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store';
-import { CreateUserModal } from 'components/Context/Users/CreateUserModal';
-import { setUserModalCreate } from 'store/users/users.ducks';
+import { CreateUserModal } from 'components/Modals/User/CreateUserModal';
+import {
+  setUserModalCreate,
+  setUserModalDelete,
+} from 'store/users/users.ducks';
+import { ConfirmDeleteUser } from 'components/Modals/User/ConfirmDeleteUser';
 
 export function UserList() {
-  const { users, modalCreate } = useSelector((state: RootState) => state.users);
-
   const dispatch = useDispatch();
+  const { users, modalCreate, modalDelete } = useSelector(
+    (state: RootState) => state.users
+  );
+  const [selectUserId, setSelectUserId] = useState(0);
+  const [selectUserName, setSelectUserName] = useState('');
+
+  function handleDelete(id: number, name: string) {
+    setSelectUserId(id);
+    setSelectUserName(name);
+    dispatch(setUserModalDelete(true));
+  }
+
   const columns = useMemo(
     () => [
       { Header: 'ID', accessor: 'id' },
@@ -48,7 +62,7 @@ export function UserList() {
       },
       {
         Header: ' ',
-        accessor: () => (
+        accessor: ({ id, firstName }: any) => (
           <HStack>
             <IconButton
               aria-label="edit-user"
@@ -65,6 +79,7 @@ export function UserList() {
               bgColor="red.400"
               title="Excluir"
               shadow="xl"
+              onClick={() => handleDelete(Number(id), String(firstName))}
             />
           </HStack>
         ),
@@ -80,6 +95,12 @@ export function UserList() {
       <CreateUserModal
         isOpen={modalCreate}
         onClose={() => dispatch(setUserModalCreate(false))}
+      />
+      <ConfirmDeleteUser
+        isOpen={modalDelete}
+        id={selectUserId}
+        nameUser={selectUserName}
+        onClose={() => dispatch(setUserModalDelete(false))}
       />
       <Box
         flex="1"
