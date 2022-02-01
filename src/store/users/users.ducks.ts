@@ -2,7 +2,15 @@ import { createAction, createReducer } from '@reduxjs/toolkit';
 
 const INITIAL_STATE = {
   users: [],
-  user: {},
+  user: {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    document: '',
+    password: '',
+    role: '',
+  },
 
   modalCreate: false,
   modalEdit: false,
@@ -17,6 +25,7 @@ export const getUserSuccess = createAction('GET_USER_SUCCESS');
 
 export const setUser = createAction<object>('CREATE_USER');
 export const deleteUser = createAction<number>('DELETE_USER');
+export const updateUser = createAction<object>('UPDATE_USER');
 
 export const setUserModalCreate = createAction<boolean>(
   'SET_USER_MODAL_CREATE'

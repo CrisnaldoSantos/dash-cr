@@ -53,10 +53,10 @@ export const mock = () =>
             id: 3,
             firstName: 'Usuario',
             lastName: 'Terceiro',
-            email: 'terceciro@gmail.com',
+            email: 'usuario3@user.com',
             document: '52254883070',
             password: '123456',
-            role: 'ADMIN',
+            role: 'USER',
           },
           {
             id: 4,

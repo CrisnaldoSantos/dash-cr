@@ -12,12 +12,12 @@ export function* signIn({ payload }: ActionType) {
   yield put({ type: startLoading.type });
   try {
     const response: ResponseGenerator = yield api.post(AUTH, payload);
-    const { id, email, firstName, LastName, role } = response.data.user;
+    const { id, email, firstName, lastName, role } = response.data.user;
 
     setAccessToken({
       accessToken: response.data.token,
       code: id,
-      fullname: `${firstName} ${LastName}`,
+      fullname: `${firstName} ${lastName}`,
       email,
       role,
     });

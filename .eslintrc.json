@@ -36,6 +36,7 @@
     "@typescript-eslint/no-use-before-define": ["error"],
     "react/react-in-jsx-scope": "off",
     "react/require-default-props":"off",
+    "react/jsx-no-useless-fragment":"off",
     "react/function-component-definition": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "react/jsx-filename-extension": [

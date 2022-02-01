@@ -13,6 +13,8 @@ import {
   setUser,
   setUserModalCreate,
   setUserModalDelete,
+  setUserModalEdit,
+  updateUser,
 } from './users.ducks';
 
 export function* getUsersList() {
@@ -48,7 +50,7 @@ export function* getUserDetail({ payload }: ActionType) {
 export function* createUser({ payload }: ActionType) {
   yield put({ type: startLoading.type });
   try {
-    yield api.delete(USERS, payload);
+    yield api.post(USERS, payload);
     successToast('Usuário criado com sucesso!');
     yield put({
       type: getUsers.type,
@@ -81,9 +83,28 @@ export function* destroyUser({ payload }: ActionType) {
   }
 }
 
+export function* editUser({ payload }: ActionType) {
+  yield put({ type: startLoading.type });
+  try {
+    yield api.put(`${USERS}/${payload.id}`, payload);
+    successToast('Usuário atualizado com sucesso!');
+    yield put({
+      type: getUsers.type,
+    });
+    yield put({
+      type: setUserModalEdit.type,
+      payload: false,
+    });
+    yield put({ type: stopLoading.type });
+  } catch (error) {
+    errorToast(`Erro ao atualizar usuário! ${error}`);
+  }
+}
+
 export function* watchSagas() {
   yield takeLatest(getUsers.type, getUsersList);
   yield takeLatest(getUser.type, getUserDetail);
   yield takeLatest(setUser.type, createUser);
   yield takeLatest(deleteUser.type, destroyUser);
+  yield takeLatest(updateUser.type, editUser);
 }
