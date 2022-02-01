@@ -7,7 +7,10 @@ export const userModalValidationSchema = yup.object().shape({
     .string()
     .required('O campo E-mail é obrigatório!')
     .email('O campo E-mail não é um valor válido!'),
-  document: yup.string().required('O campo CPF é obrigatório!'),
+  document: yup
+    .string()
+    .required('O campo CPF é obrigatório!')
+    .matches(/^(\d{3}\.){2}\d{3}-\d{2}$/, 'O CPF informado deve ser válido'),
   password: yup.string().required('O campo Senha é obrigatório!'),
   password_confirmation: yup.string().required('O campo Senha é obrigatório!'),
   role: yup.string().required('O campo Perfil é obrigatório!'),
@@ -20,7 +23,10 @@ export const userModalEditValidationSchema = yup.object().shape({
     .string()
     .required('O campo E-mail é obrigatório!')
     .email('O campo E-mail não é um valor válido!'),
-  document: yup.string().required('O campo CPF é obrigatório!'),
+  document: yup
+    .string()
+    .required('O campo CPF é obrigatório!')
+    .matches(/^(\d{3}\.){2}\d{3}-\d{2}$/, 'O CPF informado deve ser válido'),
   role: yup.string().required('O campo Perfil é obrigatório!'),
 });
 

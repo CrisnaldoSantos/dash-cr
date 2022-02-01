@@ -1,4 +1,5 @@
 import { SimpleGrid, VStack } from '@chakra-ui/react';
+
 import { Input } from 'components/Form/Input';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Select } from 'components/Form/Select';
@@ -70,6 +71,8 @@ export function CreateUserModal({ isOpen, onClose }: CreateUserModalProps) {
         <SimpleGrid minChildWidth="240px" spacing="4" w="100%">
           <Input
             label="CPF"
+            maskred
+            mask="999.999.999-99"
             error={errors.document}
             {...register('document')}
           />

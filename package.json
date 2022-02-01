@@ -65,6 +65,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-input-mask": "^3.0.1",
     "@types/react-table": "^7.7.9",
     "@typescript-eslint/parser": "^5.10.1",
     "eslint": "7.32.0",
