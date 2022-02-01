@@ -49,13 +49,13 @@ export default function Dashboard() {
   return (
     <DashContainer>
       <SimpleGrid flex="1" gap="4" minChildWidth="320px" align="flex-start">
-        <Box p="8" bg="gray.100" borderRadius={8} pb="4">
+        <Box p="8" bg="white" borderRadius={8} pb="4" boxShadow="xl">
           <Text fontSize="lg" mb="4">
             Inscritos da semana
           </Text>
           <Chart type="area" height={160} options={options} series={series} />
         </Box>
-        <Box p="8" bg="gray.100" borderRadius={8}>
+        <Box p="8" bg="white" borderRadius={8} boxShadow="xl">
           <Text fontSize="lg" mb="4">
             Taxa de abertura
           </Text>

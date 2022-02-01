@@ -6,3 +6,8 @@ export interface ResponseGenerator {
   status?: number;
   statusText?: string;
 }
+
+export interface ActionType {
+  type?: string;
+  payload?: any;
+}

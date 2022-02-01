@@ -7,6 +7,8 @@ import { SidebarDrawerProvider } from 'context/SidebarDrawerContext';
 import { mock } from 'mock/mirage';
 import { Provider } from 'react-redux';
 import store from 'store';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import reportWebVitals from './reportWebVitals';
 
 mock();
@@ -15,6 +17,7 @@ ReactDOM.render(
     <ChakraProvider theme={theme}>
       <Provider store={store}>
         <SidebarDrawerProvider>
+          <ToastContainer />
           <AppRoutes />
         </SidebarDrawerProvider>
       </Provider>

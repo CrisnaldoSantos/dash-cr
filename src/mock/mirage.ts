@@ -26,6 +26,24 @@ export const mock = () =>
             password: '123456',
             role: 'ADMIN',
           },
+          {
+            id: 3,
+            firstName: 'Usuario',
+            lastName: 'Terceiro',
+            email: 'terceciro@gmail.com',
+            document: '52254883070',
+            password: '123456',
+            role: 'ADMIN',
+          },
+          {
+            id: 4,
+            firstName: 'Usuario',
+            lastName: 'Quarto',
+            email: 'terceciro@gmail.com',
+            document: '52254883070',
+            password: '123456',
+            role: 'ADMIN',
+          },
         ],
       });
     },
@@ -43,9 +61,14 @@ export const mock = () =>
         return this.schema.all('user');
       });
 
+      this.get('/users/:id', (schema, request) => {
+        const { id } = request.params;
+        return schema.find('user', id);
+      });
+
       this.post('/users', (schema, request) => {
         const data = JSON.parse(request.requestBody);
-        return schema.create('user', { ...data, createdAt: new Date() });
+        return schema.create('user', data);
       });
     },
   });
