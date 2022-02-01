@@ -18,7 +18,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store';
 import { CreateUserModal } from 'components/Context/Users/CreateUserModal';
 import { setUserModalCreate } from 'store/users/users.ducks';
-import { ReactTable } from 'components/Context/Table/ReactTable';
 
 export function UserList() {
   const { users, modalCreate } = useSelector((state: RootState) => state.users);
@@ -121,7 +120,7 @@ export function UserList() {
               overflowY="auto"
               maxh="80vh"
             >
-              <ReactTable columns={columns} data={data} />
+              <Table columns={columns} data={data} />
             </Flex>
           </Box>
         </SimpleGrid>

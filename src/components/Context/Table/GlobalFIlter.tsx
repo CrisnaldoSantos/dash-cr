@@ -11,7 +11,7 @@ export function GlobalFilter({ filter, setFilter }: any) {
       ml="6"
       mb="4"
       maxWidth={500}
-      alignSelf="flex-end"
+      alignSelf={['center', 'flex-end']}
       color="blue.500"
       bg="gray.100"
       borderRadius="full"

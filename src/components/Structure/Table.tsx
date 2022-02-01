@@ -9,6 +9,7 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import { GlobalFilter } from 'components/Context/Table/GlobalFIlter';
+import { Alert } from 'components/Context/Table/Alert';
 
 export function Table({ columns, data }: any) {
   const {
@@ -48,8 +49,9 @@ export function Table({ columns, data }: any) {
           ))}
         </Thead>
         <Tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
+          {rows.map((row) => {
             prepareRow(row);
+
             return (
               <Tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
@@ -62,6 +64,7 @@ export function Table({ columns, data }: any) {
           })}
         </Tbody>
       </TableChakra>
+      {rows.length === 0 && <Alert status="info" text="Não há registros!" />}
     </>
   );
 }

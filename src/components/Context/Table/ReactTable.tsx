@@ -48,7 +48,7 @@ export function ReactTable({ columns, data }: any) {
           ))}
         </Thead>
         <Tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
+          {rows.map((row) => {
             prepareRow(row);
             return (
               <Tr {...row.getRowProps()}>

@@ -37,6 +37,7 @@
     "react/react-in-jsx-scope": "off",
     "react/require-default-props":"off",
     "react/function-component-definition": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "react/jsx-filename-extension": [
       1,
       {
