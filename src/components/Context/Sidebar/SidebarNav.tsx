@@ -20,7 +20,7 @@ export function SidebarNav() {
         </NavLink>
       </NavSection>
       <NavSection title="PERFIL">
-        <NavLink icon={RiProfileLine} href="/login">
+        <NavLink icon={RiProfileLine} href="/profile">
           Meu Perfil
         </NavLink>
         <NavLink icon={RiLogoutBoxLine} href="/login">

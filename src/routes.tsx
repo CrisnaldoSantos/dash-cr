@@ -1,6 +1,7 @@
 import Dashboard from 'pages/Dashboard';
 import { Login } from 'pages/Login';
 import { UserList } from 'pages/Users';
+import { Profile } from 'pages/Profile';
 import {
   BrowserRouter,
   Routes,
@@ -60,6 +61,14 @@ export function AppRoutes() {
           element={
             <RequireAuth>
               <UserList />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <RequireAuth>
+              <Profile />
             </RequireAuth>
           }
         />

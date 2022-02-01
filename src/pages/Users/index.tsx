@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unstable-nested-components */
-import { Box, Button, Flex, Heading, Icon, SimpleGrid } from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, SimpleGrid } from '@chakra-ui/react';
 import { RiAddLine } from 'react-icons/ri';
 import { DashContainer } from 'components/Structure/DashContainer';
 import { useMemo, useState } from 'react';
@@ -19,6 +19,8 @@ import { ActionsButtons } from 'components/Context/Table/ActionsButtons';
 import { UserGuards } from 'components/Guards/UserGuard';
 import { RoleGuards } from 'components/Guards/RoleGuard';
 import { EditUserModal } from 'components/Modals/User/EditUserModal';
+import { PageTitle } from 'components/Structure/PageTitle';
+import { PageContent } from 'components/Structure/PageContent';
 
 export function UserList() {
   const dispatch = useDispatch();
@@ -99,14 +101,7 @@ export function UserList() {
         id={selectUserId}
         onClose={() => dispatch(setUserModalEdit(false))}
       />
-      <Box
-        flex="1"
-        borderRadius={8}
-        bg="white"
-        p={['4', '8']}
-        boxShadow="xl"
-        pb="4"
-      >
+      <PageContent>
         <SimpleGrid
           flex="1"
           gap="4"
@@ -117,9 +112,7 @@ export function UserList() {
         >
           <Box>
             <Flex mb="8" justify="space-between" align="center">
-              <Heading size="lg" fontWeight="Bold">
-                Usuários
-              </Heading>
+              <PageTitle>Usuários</PageTitle>
               <RoleGuards>
                 <Button
                   as="a"
@@ -143,7 +136,7 @@ export function UserList() {
             </Flex>
           </Box>
         </SimpleGrid>
-      </Box>
+      </PageContent>
     </DashContainer>
   );
 }

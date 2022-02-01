@@ -6,7 +6,7 @@ import { ActionType, ResponseGenerator } from 'store/responseTypes';
 import { errorToast } from 'utils/toasts';
 import { setAccessToken } from 'utils/dataStorage';
 
-import { login, loginSuccess, logout } from './auth.ducks';
+import { login, loginSuccess, logout, setAuthUser } from './auth.ducks';
 
 export function* signIn({ payload }: ActionType) {
   yield put({ type: startLoading.type });
@@ -22,6 +22,7 @@ export function* signIn({ payload }: ActionType) {
       role,
     });
     yield put({ type: loginSuccess.type, payload: true });
+    yield put({ type: setAuthUser.type, payload: response.data.user });
     yield put({ type: stopLoading.type });
   } catch (error) {
     yield put({ type: stopLoading.type });
