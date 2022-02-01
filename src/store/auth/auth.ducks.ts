@@ -16,7 +16,7 @@ const INITIAL_STATE = {
 export const login = createAction<object>('LOGIN');
 export const loginSuccess = createAction('LOGIN_SUCCESS');
 export const logout = createAction('LOGOUT');
-export const refreshData = createAction('REFRESH_DATA');
+export const refreshData = createAction<number>('REFRESH_DATA');
 export const setAuthUser = createAction('SET_AUTH_USER');
 
 export default createReducer(INITIAL_STATE, {

@@ -3,13 +3,14 @@
 import { Box, Button, Flex, Icon, SimpleGrid } from '@chakra-ui/react';
 import { RiAddLine } from 'react-icons/ri';
 import { DashContainer } from 'components/Structure/DashContainer';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { Table } from 'components/Structure/Table';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store';
 import { CreateUserModal } from 'components/Modals/User/CreateUserModal';
 import {
+  getUsers,
   setUserModalCreate,
   setUserModalDelete,
   setUserModalEdit,
@@ -29,6 +30,10 @@ export function UserList() {
   );
   const [selectUserId, setSelectUserId] = useState(0);
   const [selectUserName, setSelectUserName] = useState('');
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
   function handleEdit(id: number, name: string) {
     setSelectUserId(id);
@@ -130,7 +135,7 @@ export function UserList() {
               direction="column"
               overflowX="auto"
               overflowY="auto"
-              maxh="80vh"
+              maxh={['auto', '80vh']}
             >
               <Table columns={columns} data={data} />
             </Flex>

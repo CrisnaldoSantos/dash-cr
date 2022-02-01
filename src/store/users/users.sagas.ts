@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 import { USERS } from 'constants/endpoints';
 import { startLoading, stopLoading } from 'store/loading/loading.ducks';
 import { api } from 'services/api';
@@ -102,7 +102,7 @@ export function* editUser({ payload }: ActionType) {
 }
 
 export function* watchSagas() {
-  yield takeLatest(getUsers.type, getUsersList);
+  yield takeEvery(getUsers.type, getUsersList);
   yield takeLatest(getUser.type, getUserDetail);
   yield takeLatest(setUser.type, createUser);
   yield takeLatest(deleteUser.type, destroyUser);

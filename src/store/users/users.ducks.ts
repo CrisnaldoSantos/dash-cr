@@ -15,6 +15,7 @@ const INITIAL_STATE = {
   modalCreate: false,
   modalEdit: false,
   modalDelete: false,
+  modalPassword: false,
 };
 
 export const getUsers = createAction('GET_USERS');
@@ -33,6 +34,9 @@ export const setUserModalCreate = createAction<boolean>(
 export const setUserModalEdit = createAction<boolean>('SET_USER_MODAL_EDIT');
 export const setUserModalDelete = createAction<boolean>(
   'SET_USER_MODAL_DELETE'
+);
+export const setUserModalPassword = createAction<boolean>(
+  'SET_USER_MODAL_PASSWORD'
 );
 
 export default createReducer(INITIAL_STATE, {
@@ -59,5 +63,10 @@ export default createReducer(INITIAL_STATE, {
   [setUserModalDelete.type]: (state, action) => ({
     ...state,
     modalDelete: action.payload,
+  }),
+
+  [setUserModalPassword.type]: (state, action) => ({
+    ...state,
+    modalPassword: action.payload,
   }),
 });

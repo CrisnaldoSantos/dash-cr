@@ -41,14 +41,14 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         mask={mask}
         focusBorderColor="blue.500"
         bgColor="gray.50"
-        variant="filled"
+        variant={disabled ? 'outline' : 'filled'}
         size="lg"
         isDisabled={disabled}
         _hover={{
           bgColor: 'gray.100',
         }}
         _disabled={{
-          color: 'blue.500',
+          color: 'blue.650',
           bgColor: 'gray.50',
         }}
         ref={ref}

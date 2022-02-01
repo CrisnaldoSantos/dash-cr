@@ -1,9 +1,10 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { ReactNode, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUsers } from 'store/users/users.ducks';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store';
 import { SpinnerLoad } from 'components/Context/DashCointainer/SpinnerLoad';
+import { getUserData } from 'utils/dataStorage';
+import { refreshData } from 'store/auth/auth.ducks';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 
@@ -12,13 +13,16 @@ interface DashContainerProps {
 }
 
 export function DashContainer({ children }: DashContainerProps) {
-  const dispatch = useDispatch();
+  const storageData = getUserData();
   const apiLoading = useSelector((state: RootState) => state.loading.loading);
+  const { user } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
-
+    if (Number(storageData.code) !== user.id) {
+      dispatch(refreshData(Number(storageData.code)));
+    }
+  }, [dispatch, storageData.code, user.id]);
   return (
     <Box>
       <Header />

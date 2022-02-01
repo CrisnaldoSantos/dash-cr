@@ -1,13 +1,23 @@
 import { Box, Flex, Button, Icon } from '@chakra-ui/react';
 import { ProfileForm } from 'components/Context/Profile/ProfileForm';
+import { UpdatePasswordModal } from 'components/Modals/Password/UpdatePasswordModal';
 import { DashContainer } from 'components/Structure/DashContainer';
 import { PageContent } from 'components/Structure/PageContent';
 import { PageTitle } from 'components/Structure/PageTitle';
 import { RiEdit2Line } from 'react-icons/ri';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'store';
+import { setUserModalPassword } from 'store/users/users.ducks';
 
 export function Profile() {
+  const dispatch = useDispatch();
+  const { modalPassword } = useSelector((state: RootState) => state.users);
   return (
     <DashContainer>
+      <UpdatePasswordModal
+        isOpen={modalPassword}
+        onClose={() => dispatch(setUserModalPassword(false))}
+      />
       <PageContent>
         <Box>
           <Flex mb="8" justify="space-between" align="center">
@@ -18,7 +28,7 @@ export function Profile() {
               fontSize="sm"
               colorScheme="blue"
               leftIcon={<Icon as={RiEdit2Line} />}
-              onClick={() => {}}
+              onClick={() => dispatch(setUserModalPassword(true))}
             >
               Alterar Senha
             </Button>
