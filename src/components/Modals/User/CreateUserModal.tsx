@@ -6,7 +6,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import { setUser } from 'store/users/users.ducks';
 import { Modal } from 'components/Context/Modals/General/Modal';
-import { userModalValidationSchema } from './UserModalValidation';
+import {
+  defaultCreateValues,
+  userModalValidationSchema,
+} from './UserModalValidation';
 
 interface CreateUserModalProps {
   isOpen: boolean;
@@ -27,8 +30,10 @@ export function CreateUserModal({ isOpen, onClose }: CreateUserModalProps) {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<UserFormData>({
     resolver: yupResolver(userModalValidationSchema),
+    defaultValues: defaultCreateValues,
   });
 
   const dispatch = useDispatch();
@@ -41,7 +46,10 @@ export function CreateUserModal({ isOpen, onClose }: CreateUserModalProps) {
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={() => {
+        onClose();
+        reset(defaultCreateValues);
+      }}
       title="Novo Usuário"
       onSubmit={handleSubmit(handleSave)}
       size="2xl"

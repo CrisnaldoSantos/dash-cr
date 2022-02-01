@@ -23,3 +23,13 @@ export const userModalEditValidationSchema = yup.object().shape({
   document: yup.string().required('O campo CPF é obrigatório!'),
   role: yup.string().required('O campo Perfil é obrigatório!'),
 });
+
+export const defaultCreateValues = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  document: '',
+  password: '',
+  password_confirmation: '',
+  role: '',
+};

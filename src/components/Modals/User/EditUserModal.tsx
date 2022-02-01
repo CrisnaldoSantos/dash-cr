@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { Select } from 'components/Form/Select';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser, setUser, updateUser } from 'store/users/users.ducks';
+import { getUser, updateUser } from 'store/users/users.ducks';
 import { Modal } from 'components/Context/Modals/General/Modal';
 import { useEffect, useState } from 'react';
 import { RootState } from 'store';
