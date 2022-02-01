@@ -8,9 +8,9 @@ import {
   Thead,
   Tr,
 } from '@chakra-ui/react';
-import { GlobalFilter } from 'components/Context/Table/GlobalFIlter';
+import { GlobalFilter } from './GlobalFIlter';
 
-export function Table({ columns, data }: any) {
+export function ReactTable({ columns, data }: any) {
   const {
     getTableProps,
     getTableBodyProps,

@@ -1,5 +1,15 @@
-import { Box, Button, Flex, Heading, Icon, SimpleGrid } from '@chakra-ui/react';
-import { RiAddLine } from 'react-icons/ri';
+/* eslint-disable react/no-unstable-nested-components */
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  IconButton,
+  SimpleGrid,
+} from '@chakra-ui/react';
+import { RiAddLine, RiDeleteBin2Line, RiEdit2Line } from 'react-icons/ri';
 import { DashContainer } from 'components/Structure/DashContainer';
 import { useMemo } from 'react';
 
@@ -8,6 +18,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'store';
 import { CreateUserModal } from 'components/Context/Users/CreateUserModal';
 import { setUserModalCreate } from 'store/users/users.ducks';
+import { ReactTable } from 'components/Context/Table/ReactTable';
 
 export function UserList() {
   const { users, modalCreate } = useSelector((state: RootState) => state.users);
@@ -35,6 +46,29 @@ export function UserList() {
       {
         Header: 'Perfil',
         accessor: 'role',
+      },
+      {
+        Header: ' ',
+        accessor: () => (
+          <HStack>
+            <IconButton
+              aria-label="edit-user"
+              size="sm"
+              icon={<Icon as={RiEdit2Line} />}
+              bgColor="blue.200"
+              title="Editar"
+              shadow="xl"
+            />
+            <IconButton
+              aria-label="delete-user"
+              size="sm"
+              icon={<Icon as={RiDeleteBin2Line} />}
+              bgColor="red.400"
+              title="Excluir"
+              shadow="xl"
+            />
+          </HStack>
+        ),
       },
     ],
     []
@@ -87,7 +121,7 @@ export function UserList() {
               overflowY="auto"
               maxh="80vh"
             >
-              <Table columns={columns} data={data} />
+              <ReactTable columns={columns} data={data} />
             </Flex>
           </Box>
         </SimpleGrid>

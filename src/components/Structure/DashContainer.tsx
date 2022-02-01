@@ -22,7 +22,7 @@ export function DashContainer({ children }: DashContainerProps) {
   return (
     <Box>
       <Header />
-      <Flex w="100%" my="6" maxWidth={1180} mx="auto" px="6">
+      <Flex w="100%" my="6" maxWidth={1280} mx="auto" px="6">
         <Sidebar />
         {apiLoading === 1 ? <SpinnerLoad /> : children}
       </Flex>
