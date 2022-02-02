@@ -1,6 +1,7 @@
 import { Box, Flex, Button, Icon } from '@chakra-ui/react';
 import { ProfileForm } from 'components/Context/Profile/ProfileForm';
 import { UpdatePasswordModal } from 'components/Modals/Password/UpdatePasswordModal';
+
 import { DashContainer } from 'components/Structure/DashContainer';
 import { PageContent } from 'components/Structure/PageContent';
 import { PageTitle } from 'components/Structure/PageTitle';
