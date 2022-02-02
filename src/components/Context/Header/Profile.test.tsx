@@ -15,8 +15,6 @@ jest.mock('utils/dataStorage', () => {
   };
 });
 
-// const mockGetUserData = getUserData as jest.MockedFunction<typeof getUserData>;
-
 describe('Profile Component', () => {
   it('deve exibir as informações obtidas do localStorage, o nome, o email e o nome presente na formação de iniciais do avatar', async () => {
     const fullname = 'usuario teste';
