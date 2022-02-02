@@ -1,66 +1,41 @@
-import { Box, SimpleGrid, Text, theme } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
+import { PieChart } from 'components/Charts/PieChart';
+import { CounterRegister } from 'components/Context/Dashboard/CounterRegister';
 import { DashContainer } from 'components/Structure/DashContainer';
-import Chart from 'react-apexcharts';
-
-const options: ApexCharts.ApexOptions = {
-  chart: {
-    toolbar: {
-      show: false,
-    },
-    zoom: {
-      enabled: false,
-    },
-    foreColor: theme.colors.gray[500],
-  },
-  grid: {
-    show: false,
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  tooltip: {
-    enabled: false,
-  },
-  xaxis: {
-    type: 'datetime',
-    categories: [
-      '2022-01-02T00:00:00.000Z',
-      '2022-01-03T00:00:00.000Z',
-      '2022-01-04T00:00:00.000Z',
-      '2022-01-05T00:00:00.000Z',
-      '2022-01-06T00:00:00.000Z',
-      '2022-01-07T00:00:00.000Z',
-      '2022-01-08T00:00:00.000Z',
-    ],
-  },
-  fill: {
-    opacity: 0.3,
-    type: 'gradient',
-    gradient: {
-      shade: 'dark',
-      opacityFrom: 0.7,
-      opacityTo: 0.3,
-    },
-  },
-};
-const series = [{ name: 'series 1', data: [31, 120, 10, 28, 61, 18, 109] }];
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'store';
+import { getUsers } from 'store/users/users.ducks';
+import { UserData } from 'models/userData';
 
 export default function Dashboard() {
+  const dispatch = useDispatch();
+  const { users } = useSelector((state: RootState) => state.users);
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
+  const usersType = users.reduce(
+    (acc, user: UserData) => {
+      if (user.role === 'ADMIN') {
+        acc.admins += 1;
+      } else {
+        acc.users += 1;
+      }
+      return acc;
+    },
+    { admins: 0, users: 0 }
+  );
+
   return (
     <DashContainer>
       <SimpleGrid flex="1" gap="4" minChildWidth="320px" align="flex-start">
-        <Box p="8" bg="white" borderRadius={8} pb="4" boxShadow="xl">
-          <Text fontSize="lg" mb="4">
-            Inscritos da semana
-          </Text>
-          <Chart type="area" height={160} options={options} series={series} />
-        </Box>
-        <Box p="8" bg="white" borderRadius={8} boxShadow="xl">
-          <Text fontSize="lg" mb="4">
-            Taxa de abertura
-          </Text>
-          <Chart type="area" height={160} options={options} series={series} />
-        </Box>
+        <CounterRegister counter={users.length} label="Usuários Cadastrados" />
+        <PieChart
+          chartTitle="Usuários por Perfil"
+          series={[Number(usersType.admins), Number(usersType.users)]}
+        />
       </SimpleGrid>
     </DashContainer>
   );

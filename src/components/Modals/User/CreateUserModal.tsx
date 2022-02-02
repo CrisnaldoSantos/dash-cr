@@ -88,12 +88,14 @@ export function CreateUserModal({ isOpen, onClose }: CreateUserModalProps) {
             type="password"
             label="Senha"
             error={errors.password}
+            passwordInput
             {...register('password')}
           />
           <Input
             type="password"
             label="Confirmação da senha"
             error={errors.password_confirmation}
+            passwordInput
             {...register('password_confirmation')}
           />
         </SimpleGrid>

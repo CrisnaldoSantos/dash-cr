@@ -1,4 +1,4 @@
-export type UserData = {
+export interface UserData {
   id: number;
   firstName: string;
   lastName: string;
@@ -6,4 +6,4 @@ export type UserData = {
   document: string;
   password: string;
   role: string;
-};
+}
