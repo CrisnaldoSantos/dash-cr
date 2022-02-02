@@ -28,12 +28,17 @@
   ],
   "rules": {
     "prettier/prettier": "error",
+    "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "react/react-in-jsx-scope": "off",
+    "react/require-default-props":"off",
+    "react/jsx-no-useless-fragment":"off",
+    "react/function-component-definition": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "react/jsx-filename-extension": [
       1,
       {
