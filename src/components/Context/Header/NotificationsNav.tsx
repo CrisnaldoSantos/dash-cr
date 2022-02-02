@@ -12,8 +12,8 @@ export function NotificationsNav() {
       borderRightWidth={1}
       borderColor="gray.700"
     >
-      <Icon as={RiNotificationLine} fontSize="20" title="inProgress" />
-      <Icon as={RiUserAddLine} fontSize="20" title="inProgress" />
+      <Icon as={RiNotificationLine} fontSize="20" title="notify" />
+      <Icon as={RiUserAddLine} fontSize="20" title="user-notify" />
     </HStack>
   );
 }

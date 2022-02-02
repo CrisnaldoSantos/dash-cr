@@ -14,7 +14,7 @@ export function PaginationItem({
         size="sm"
         fontSize="xs"
         width="4"
-        colorScheme="pink"
+        colorScheme="facebook"
         disabled
         _disabled={{
           bgColor: 'pink.500',
@@ -31,9 +31,9 @@ export function PaginationItem({
       size="sm"
       fontSize="xs"
       width="4"
-      bg="gray.700"
+      bg="gray.100"
       _hover={{
-        bg: 'gray.500',
+        bg: 'gray.300',
       }}
     >
       {number}
