@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="https://github.com/CrisnaldoSantos/cr-dash-softplan/blob/main/src/assets/readme/logo.PNG" width="50px">
+    <img src="https://github.com/CrisnaldoSantos/cr-dash-softplan/blob/main/src/assets/readme/logo.PNG">
 </h1>
 
 <p align="center">
