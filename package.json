@@ -43,7 +43,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false && env-cmd -f ./.env.production react-scripts build",
+    "build": "env-cmd -f ./.env.production react-scripts build",
+    "build:firebase": "CI=false && env-cmd -f ./.env.production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
