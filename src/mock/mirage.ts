@@ -2,6 +2,7 @@
 import { createServer, Model, Response, Registry } from 'miragejs';
 import { ModelDefinition } from 'miragejs/-types';
 import Schema from 'miragejs/orm/schema';
+import { UserData } from 'models/userData';
 
 export type User = {
   firstName: string;
@@ -33,8 +34,8 @@ export const mock = () =>
         users: [
           {
             id: 1,
-            firstName: 'Thomas',
-            lastName: 'Hudson',
+            firstName: 'Poderoso',
+            lastName: 'Chefão',
             email: 'thomas.hudson@gmail.com',
             document: '757.675.110-04',
             password: '123456',
@@ -52,7 +53,7 @@ export const mock = () =>
           {
             id: 3,
             firstName: 'Usuario',
-            lastName: 'Terceiro',
+            lastName: 'Comum',
             email: 'usuario3@user.com',
             document: '654.958.070-65',
             password: '123456',
@@ -62,7 +63,7 @@ export const mock = () =>
             id: 4,
             firstName: 'Usuario',
             lastName: 'Quarto',
-            email: 'terceciro@gmail.com',
+            email: 'usuario4@user.com',
             document: '654.958.070-65',
             password: '123456',
             role: 'ADMIN',
@@ -102,8 +103,27 @@ export const mock = () =>
         return schema.find('user', id);
       });
 
-      this.post('/users', (schema, request) => {
-        const data = JSON.parse(request.requestBody);
+      this.post('/users', (schema: AppSchema, request) => {
+        type CreateUserData = Omit<UserData, 'id'>;
+        const data: CreateUserData = JSON.parse(request.requestBody);
+        const { document, email } = data;
+        const existsEmail = schema.findBy('user', { email });
+        const existsDocument = schema.findBy('user', { document });
+        if (existsEmail) {
+          return new Response(
+            400,
+            { some: 'header' },
+            { error: ['This email already exists'] }
+          );
+        }
+        if (existsDocument) {
+          return new Response(
+            400,
+            { some: 'header' },
+            { error: ['This CPF already exists'] }
+          );
+        }
+
         return schema.create('user', data);
       });
 

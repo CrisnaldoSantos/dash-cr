@@ -63,6 +63,11 @@ export function* createUser({ payload }: ActionType) {
     yield put({ type: stopLoading.type });
   } catch (error) {
     errorToast(`Erro ao criar usuário! ${error}`);
+    yield put({ type: stopLoading.type });
+    yield put({
+      type: setUserModalCreate.type,
+      payload: false,
+    });
   }
 }
 
