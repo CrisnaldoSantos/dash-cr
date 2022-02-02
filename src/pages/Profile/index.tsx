@@ -1,7 +1,6 @@
 import { Box, Flex, Button, Icon } from '@chakra-ui/react';
 import { ProfileForm } from 'components/Context/Profile/ProfileForm';
-import { UpdatePasswordModal } from 'components/Modals/Password/UpdatePasswordModal';
-
+import { PasswordUpdateModal } from 'components/Modals/Password/PasswordUpdateModal';
 import { DashContainer } from 'components/Structure/DashContainer';
 import { PageContent } from 'components/Structure/PageContent';
 import { PageTitle } from 'components/Structure/PageTitle';
@@ -15,7 +14,7 @@ export function Profile() {
   const { modalPassword } = useSelector((state: RootState) => state.users);
   return (
     <DashContainer>
-      <UpdatePasswordModal
+      <PasswordUpdateModal
         isOpen={modalPassword}
         onClose={() => dispatch(setUserModalPassword(false))}
       />
