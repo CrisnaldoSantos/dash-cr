@@ -36,7 +36,7 @@ export const mock = () =>
             id: 1,
             firstName: 'Poderoso',
             lastName: 'Chefão',
-            email: 'thomas.hudson@gmail.com',
+            email: 'poderoso.chefao@gmail.com',
             document: '757.675.110-04',
             password: '123456',
             role: 'ADMIN',
