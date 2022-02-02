@@ -60,7 +60,7 @@ Como biblioteca de UI, foi utilizada o <a href="https://chakra-ui.com/" target="
 
 Para o mock http foi utilizado o <a href="https://miragejs.com/" target="_blank">MirageJs</a>. Elém provém um middleware na própria aplicação, o acesso a API mockada é feito pela propria url da aplicação com uso de um namespace ('/api' usado no DashCr). As chamadas feitas são interceptadas e listadas no console da aplicação. Como benefício, não há necessidade de execuções externas para usar o mock, ele fica integrado na aplicação. Permitindo até que seja usada em homolog como foi o caso. As novas informações se mantém persistidas até a aplicação ser atualizada ou reiniciada. No inicio do mock serão carregados os dados abaixo:
 
-<img src="./src/assets/readme/mock-users.PNG" alt ="web"/>
+<img src="./src/assets/readme/mock-users.png" alt ="web"/>
 
 Comportamentos da interface, como no sidebar, foi utilizado ContextAPI.
 Para uso e disparo das chamadas a Api foi usado Redus Sagas implementado com Toolkit.
