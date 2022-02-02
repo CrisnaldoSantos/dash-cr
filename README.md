@@ -1,46 +1,101 @@
-# Getting Started with Create React App
+<h1 align="center">
+    <img src="https://github.com/CrisnaldoSantos/cr-dash-softplan/blob/main/src/assets/readme/logo.PNG">
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <a href="https://www.crisnaldocarvalho.com.br">
+    <img alt="Made by Crisnaldo" src="https://img.shields.io/badge/made%20by-Crisnaldo Carvalho-3182CE">
+  </a>
 
-## Available Scripts
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-3182CE">
+</p>
 
-In the project directory, you can run:
+## Descrição:
 
-### `npm start`
+<p>
+Aplicação front-end em ReactJS como parte do processo seletivo da Softplan para desensolvedor.</p>
+<p>
+Com base no desafio proposto, como solução foi projetado e desenvolvido uma aplicação com dashboard de controle de usuários, a ideia de interface já ahavia utilizado em um projeto de estudo em um curso de especialização em React, porém foi remodelada e com novas funcionalidades para esta tarefa. Assim surgindo o DashCr . ("meu" Dashboard Controlador de Recursos).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Executando o projeto
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Após clonar o repositório,entrar na pasta raiz do projeto e instale as dependências com os comandos abaixo via terminal:
 
-### `npm test`
+```js
+cd cr-dash-softplan
+yarn install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Com o terminal ainda na pasta raiz do projeto, execute o comando:
 
-### `npm run build`
+```js
+yarn start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Outra opção disponível para executar o projeto é através do Docker. Tendo o mesmo devidamente intalado na sua máquina, abra o terminal na pasta raiz do projeto e execute o comando:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```js
+docker-compose up -d --build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Esse docker tem foco no desenvolvimento, portanto há um compartilhamento do volume node_modules para uso no container, estando sempre refletindo o estado atual do projeto.
 
-### `npm run eject`
+Após executar uma das duas formas de execução do projeto, o mesmo se encontrará no endereço http://localhost:3000/ .
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Para logar na plataforma use um dos usuários presentes no Mirage Mock que se encontra na seção de decisões técnicas.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Homologação
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Com o uso do MirageJs, ao qual o mock acompanha a aplicação, foi realizado uma Action de Deploy automático para o Firebase Hosting. E a aplicação pode ser acessada através do link: <br/>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<p align="center">
+<a href="https://dash-cr.web.app/" target="_blank">https://dash-cr.web.app/</a>
+</p>
 
-## Learn More
+## Decisões Técnicas
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Utilizei esse projeto como além do desafio proposto um desafio pessoal de utilizar coisas mais recentes, as quais venho estudando.
+O projeto foi iniciado com Create React App e typescript.
+Como biblioteca de UI, foi utilizada o <a href="https://chakra-ui.com/" target="_blank">Chakra UI</a>. A ideia foi aplicar interfaces declarativas, que consiste em manter a estilização junto do código JSX, e diferente dos concorrentes Material, Bootstrao, Reactstrap, o Chalra não impõe um padrão de aplicação/estilização. Trazendo Hooks para tratamento de brakpoints, entre outros, facilita a confecção de interfaces responsivas e calculadas. O ponto negativo desse tipo de interface é a verbosidade do código, que é sanado com a quebra em componentização, que auxilia na manutenção do código e nos testes do mesmo, por isso foi escolhida essa abordagem para este projeto.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Para o mock http foi utilizado o <a href="https://miragejs.com/" target="_blank">MirageJs</a>. Elém provém um middleware na própria aplicação, o acesso a API mockada é feito pela propria url da aplicação com uso de um namespace ('/api' usado no DashCr). As chamadas feitas são interceptadas e listadas no console da aplicação. Como benefício, não há necessidade de execuções externas para usar o mock, ele fica integrado na aplicação. Permitindo até que seja usada em homolog como foi o caso. As novas informações se mantém persistidas até a aplicação ser atualizada ou reiniciada. No inicio do mock serão carregados os dados abaixo:
+
+<img src="./src/assets/readme/mock-users.png" alt ="web"/>
+
+Comportamentos da interface, como no sidebar, foi utilizado ContextAPI.
+Para uso e disparo das chamadas a Api foi usado Redus Sagas implementado com Toolkit.
+Para os testes foi utilizado Testing Library.
+React Hook Form para validação de formulários.
+
+### Tenologias:
+
+- React JS
+- Typescript
+- ChakraUI
+- MirageJs
+- React Hook Form
+- Testing Library
+- React Table
+- Axios
+- ContextAPI
+- ReduxJSToolkit
+- Redux Sagas
+- Firebase
+- Docker
+
+## Screenshots
+
+### Desktop
+
+<img src="./src/assets/readme/login.PNG" alt ="web"/>
+<img src="./src/assets/readme/dashboard.PNG" alt ="web"/>
+<img src="./src/assets/readme/users.PNG" alt ="web"/>
+<img src="./src/assets/readme/profile.PNG" alt ="web"/>
+
+### Mobile Responsivo
+
+<img src="./src/assets/readme/login-mobile.PNG" alt ="web"/>
+<img src="./src/assets/readme/dashboard-mobile.PNG" alt ="web"/>
+<img src="./src/assets/readme/sidebar-mobile.PNG" alt ="web"/>
+<img src="./src/assets/readme/users-mobile.PNG" alt ="web"/>
+<img src="./src/assets/readme/profile-mobile.PNG" alt ="web"/>
