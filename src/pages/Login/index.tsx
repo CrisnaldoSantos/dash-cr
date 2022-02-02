@@ -62,6 +62,7 @@ export function Login() {
           <Input
             type="password"
             label="Senha"
+            passwordInput
             {...register('password')}
             error={errors.password}
           />

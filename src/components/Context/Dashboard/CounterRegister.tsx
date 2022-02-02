@@ -7,16 +7,21 @@ interface CounterRegisterProps {
 }
 export function CounterRegister({ counter, label }: CounterRegisterProps) {
   const [count, setCount] = useState(0);
-  const total = 1000;
+  const total = 800;
 
   useEffect(() => {
     let start = 0;
+    let isMounted = true;
+
     const increment = total / counter;
     const timer = setInterval(() => {
       start += 1;
-      setCount(start);
+      if (isMounted) setCount(start);
       if (start === counter) clearInterval(timer);
     }, increment);
+    return () => {
+      isMounted = false;
+    };
   }, [counter]);
 
   return (
