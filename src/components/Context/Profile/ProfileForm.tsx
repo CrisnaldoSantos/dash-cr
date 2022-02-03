@@ -8,7 +8,7 @@ export function ProfileForm() {
   return (
     <VStack spacing="2" justify="center">
       <Avatar
-        name="Crisnaldo Carvalho"
+        name={`${user.firstName} ${user.lastName}`}
         size="xl"
         bg="blue.500"
         mb="4"

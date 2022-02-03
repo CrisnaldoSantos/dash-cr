@@ -69,6 +69,7 @@
   "devDependencies": {
     "@types/react-input-mask": "^3.0.1",
     "@types/react-table": "^7.7.9",
+    "@types/redux-mock-store": "^1.0.3",
     "@typescript-eslint/parser": "^5.10.1",
     "eslint": "7.32.0",
     "eslint-config-airbnb-typescript": "^16.1.0",
@@ -78,6 +79,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "redux-mock-store": "^1.5.4"
   }
 }
