@@ -13,16 +13,16 @@
 ## Descrição:
 
 <p>
-Aplicação front-end em ReactJS como parte do processo seletivo da Softplan para desensolvedor.</p>
+Aplicação front-end em ReactJS como parte de processo seletivo que tem por objetivo um gerenciamento de usuários.</p>
 <p>
-Com base no desafio proposto, como solução foi projetado e desenvolvido uma aplicação com dashboard de controle de usuários, a ideia de interface já ahavia utilizado em um projeto de estudo em um curso de especialização em React, porém foi remodelada e com novas funcionalidades para esta tarefa. Assim surgindo o DashCr . ("meu" Dashboard Controlador de Recursos).
+Com base no desafio proposto, como solução foi projetado e desenvolvido uma aplicação com dashboard de controle de usuários, a ideia de interface já ahavia utilizado em um projeto de estudo em um curso de especialização em React, porém foi remodelada e com novas funcionalidades para esta tarefa. Assim surgindo o DashCr . (Dashboard Controlador de Recursos).
 
 ## Executando o projeto
 
 Após clonar o repositório,entrar na pasta raiz do projeto e instale as dependências com os comandos abaixo via terminal:
 
 ```js
-cd cr-dash-softplan
+cd dash-cr
 yarn install
 ```
 
