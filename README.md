@@ -8,6 +8,11 @@
   </a>
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-3182CE">
+
+  <img alt="License" src="https://img.shields.io/github/repo-size/CrisnaldoSantos/dash-cr?color=3182CE">
+
+  <img alt="License" src="https://img.shields.io/github/languages/count/CrisnaldoSantos/dash-cr?color=3182CE">
+
 </p>
 
 ## Descrição:
